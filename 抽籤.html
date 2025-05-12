@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>隨機抽籤程式</title>
+  <style>
+    body {
+      font-family: "Noto Sans TC", sans-serif;
+      background-color: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    h1 {
+      color: #444;
+    }
+    textarea {
+      width: 300px;
+      height: 120px;
+      font-size: 16px;
+      padding: 8px;
+      margin-top: 10px;
+      resize: none;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 24px;
+      color: #e91e63;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎯 隨機抽籤程式</h1>
+  <p>請輸入名單（每行一個）：</p>
+  <textarea id="nameList" placeholder="例：\n陳怡儒\n靜湘\n皮卡丘"></textarea>
+  <br>
+  <button onclick="draw()">開始抽籤</button>
+  <div class="result" id="result"></div>
+
+  <script>
+    function draw() {
+      const input = document.getElementById("nameList").value;
+      const names = input.split('\n').map(name => name.trim()).filter(name => name !== '');
+      
+      if (names.length === 0) {
+        alert("請輸入至少一個名字！");
+        return;
+      }
+
+      const randomIndex = Math.floor(Math.random() * names.length);
+      const winner = names[randomIndex];
+
+      document.getElementById("result").innerText = `🎉 抽中的人是：${winner}！`;
+    }
+  </script>
+</body>
+</html>
