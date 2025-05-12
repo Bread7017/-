@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>隨機抽籤程式</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding-top: 50px;
+    }
+    button {
+      font-size: 20px;
+      padding: 10px 20px;
+    }
+    #result {
+      margin-top: 30px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #2b6cb0;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎲 隨機抽籤程式</h1>
+  <button onclick="draw()">抽一位同學</button>
+  <div id="result"></div>
+
+  <script>
+    const names = [
+      "柳本君", "陳奕勳", "陳郁芯", "林孝威", "卞瑋", "曾柏榛", "林昱美", "楊詩辰",
+      "張以蓁", "洪毓宸", "王琦瑩", "詹子熙", "林倉平", "王于心", "許晏昀", "賴彥曈",
+      "虞詠琪", "范恆新", "吳昱璇", "林柔逸", "郭家怡", "姚如庭", "葉宥陞", "林憶蓁",
+      "莊博文", "蕭瑤", "林彥岑", "鍾昀晏", "高芳梓", "曹心又", "何文愛", "毛佑倫",
+      "林玟伶", "陳又嘉", "許昕嵐", "羅彥婷", "袁瑞伶", "姜如蔚", "呂柔婕", "黃琪涵",
+      "李宗翰", "吳瑾怡", "李庭宏", "潘冠廷", "林辰佑", "張采彤", "謝沛璇", "張慧蓉", "林立樺"
+    ];
+
+    function draw() {
+      const index = Math.floor(Math.random() * names.length);
+      const selected = names[index];
+      document.getElementById("result").textContent = "🎉 抽到的是：「" + selected + "」！";
+    }
+  </script>
+</body>
+</html>
