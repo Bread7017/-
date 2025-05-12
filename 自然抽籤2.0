@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>隨機抽籤程式</title>
+  <style>
+    body {
+      font-family: "Noto Sans TC", sans-serif;
+      background-color: #f0f4f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    textarea {
+      width: 300px;
+      height: 300px;
+      font-size: 16px;
+      padding: 8px;
+      margin-top: 10px;
+      resize: none;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 24px;
+      color: #e74c3c;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎯 隨機抽籤程式</h1>
+  <p>請從下方名單中抽出一位：</p>
+  <textarea id="nameList">
+柳本君
+陳奕勳
+陳郁芯
+林孝威
+卞瑋
+曾柏榛
+林昱美
+楊詩辰
+張以蓁
+洪毓宸
+王琦瑩
+詹子熙
+林倉平
+王于心
+許晏昀
+賴彥曈
+虞詠琪
+范恆新
+吳昱璇
+林柔逸
+郭家怡
+姚如庭
+葉宥陞
+林憶蓁
+莊博文
+蕭瑤
+林彥岑
+鍾昀晏
+高芳梓
+曹心又
+何文愛
+毛佑倫
+林玟伶
+陳又嘉
+許昕嵐
+羅彥婷
+袁瑞伶
+姜如蔚
+呂柔婕
+黃琪涵
+李宗翰
+吳瑾怡
+李庭宏
+潘冠廷
+林辰佑
+張采彤
+謝沛璇
+張慧蓉
+林立樺
+  </textarea>
+  <br>
+  <button onclick="draw()">開始抽籤</button>
+  <div class="result" id="result"></div>
+
+  <script>
+    function draw() {
+      const input = document.getElementById("nameList").value;
+      const names = input.split('\n').map(name => name.trim()).filter(name => name !== '');
+      
+      if (names.length === 0) {
+        alert("名單為空！");
+        return;
+      }
+
+      const randomIndex = Math.floor(Math.random() * names.length);
+      const winner = names[randomIndex];
+
+      document.getElementById("result").innerText = `🎉 抽中的人是：${winner}！`;
+    }
+  </script>
+</body>
+</html>
